@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Оформление заказа в интернет-магазине NovaPlay.">
+  <meta name="theme-color" content="#171717">
+  <title>Оформление заказа — NovaPlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="site-header sticky-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__mark" aria-hidden="true"></span>NovaPlay
+      </a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="index.html#popular">Популярное</a></li>
+        </ul>
+      </nav>
+      <button class="button" type="button" id="open-order-dialog">Оставить заявку</button>
+      <button class="button button--ghost mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span class="mobile-menu-toggle__line"></span>
+        <span class="mobile-menu-toggle__line"></span>
+        <span class="mobile-menu-toggle__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section order-page">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <a href="index.html">Главная</a> / <span>Оформление заказа</span>
+        </nav>
+
+        <div class="order-layout">
+          <div class="order-form-section">
+            <h1 class="page-title">Оформление заказа</h1>
+
+            <form class="order-form" id="order-form" action="#" method="post" novalidate>
+              <fieldset class="order-form__fieldset">
+                <legend class="order-form__legend">Ваши данные</legend>
+
+                <label for="order-name">Имя</label>
+                <input id="order-name" name="name" type="text" minlength="2" maxlength="50" autocomplete="name" required>
+
+                <label for="order-email">E-mail</label>
+                <input id="order-email" name="email" type="email" placeholder="name@example.ru" autocomplete="email" required>
+
+                <label for="order-phone">Телефон</label>
+                <input id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 900 000-00-00" pattern="\+7[0-9]{10}" autocomplete="tel" required>
+
+                <label for="order-address">Адрес доставки</label>
+                <input id="order-address" name="address" type="text" maxlength="200" autocomplete="street-address" required>
+              </fieldset>
+
+              <fieldset class="order-form__fieldset">
+                <legend class="order-form__legend">Доставка и оплата</legend>
+
+                <label for="order-date">Желаемая дата доставки</label>
+                <input id="order-date" name="delivery-date" type="date" required>
+
+                <label for="order-payment">Способ оплаты</label>
+                <select id="order-payment" name="payment" required>
+                  <option value="">Выберите способ оплаты</option>
+                  <option value="card">Банковская карта онлайн</option>
+                  <option value="cash">Наличными при получении</option>
+                  <option value="sbp">Система быстрых платежей (СБП)</option>
+                </select>
+              </fieldset>
+
+              <label for="order-comment">Комментарий к заказу</label>
+              <textarea id="order-comment" name="comment" rows="4" maxlength="300" placeholder="Пожелания по доставке или оплате"></textarea>
+
+              <label class="checkbox-label order-form__agreement" for="order-agreement">
+                <input id="order-agreement" name="agreement" type="checkbox" required>
+                Согласен на обработку персональных данных и условия оферты
+              </label>
+
+              <p class="form-message" id="form-message" hidden>Заказ успешно оформлен. Мы свяжемся с вами в ближайшее время.</p>
+
+              <div class="form-actions">
+                <button class="button" type="submit">Оформить заказ</button>
+                <a class="button button--ghost" href="catalog.html">Вернуться в каталог</a>
+              </div>
+            </form>
+          </div>
+
+          <aside class="order-summary">
+            <div class="order-summary__card">
+              <h2 class="order-summary__title">Ваш заказ</h2>
+              <div class="order-summary__item">
+                <span class="order-summary__item-name">Игровая приставка NovaPlay One</span>
+                <span class="order-summary__item-price">29 990 ₽</span>
+              </div>
+              <div class="order-summary-divider"></div>
+              <div class="order-summary__totals">
+                <span class="order-summary__totals-label">Итого:</span>
+                <span class="order-summary__totals-price">29 990 ₽</span>
+              </div>
+            </div>
+            <p class="order-summary__note">Доставка курьером в течение 1–3 рабочих дней.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <div class="container site-footer__inner">
+      <p class="site-footer__brand">NovaPlay</p>
+      <p class="site-footer__note">Учебный проект</p>
+    </div>
+  </footer>
+
+  <dialog class="order-dialog" id="order-dialog">
+    <form class="order-form" id="order-dialog-form" action="#" method="post">
+      <h2>Быстрая заявка</h2>
+
+      <label for="dialog-order-name">Имя</label>
+      <input id="dialog-order-name" name="name" type="text" minlength="2" maxlength="50" autocomplete="name" required>
+
+      <label for="dialog-order-phone">Телефон</label>
+      <input id="dialog-order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 900 000-00-00" pattern="\+7[0-9]{10}" autocomplete="tel" required>
+
+      <input name="source" type="hidden" value="order-page-dialog">
+
+      <p class="form-message" id="dialog-form-message" hidden>Заявка принята. Мы перезвоним вам.</p>
+
+      <div class="form-actions">
+        <button class="button" type="submit">Отправить</button>
+        <button class="button button--ghost" type="button" id="close-dialog-order">Закрыть</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
